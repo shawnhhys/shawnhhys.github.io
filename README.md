@@ -1,2 +1,2 @@
 # shawnhhys.github.io
-lab content
+personal page
