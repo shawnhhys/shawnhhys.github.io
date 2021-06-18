@@ -1,0 +1,98 @@
+/* nav icon */
+#intro {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.4em;
+}
+
+#intro svg{
+    fill: rgba(0, 255, 255, 0.753);
+}
+
+#intro h5{
+    display: inline;
+}
+
+/* background */
+#background{
+    background-image: url(../img/space-fantasy-wallpaper.jpg);
+    background-size: cover;
+    background-position: 50% 65%;
+    background-blend-mode: soft-light;
+}
+
+#cards h2{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+
+#cards #cardText{
+    color:burlywood;
+}
+
+#cards a{
+    color: rgba(41, 6, 32, 0.863);
+}
+
+#cards .btn-secondary{
+    background-color: #EAE4CE!important;
+}
+
+#banner #subtitle{
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* About page */
+/* About title picture */
+#banner #selfie{
+    display: 50% 50%;
+    border-radius: 21px ;
+}
+
+#banner {
+    background-image: url(../img/space-fantasy-wallpaper-2.jpg);
+    background-size: cover;
+    background-position: 50% 65%;
+    background-blend-mode: soft-light;
+}
+
+#banner #titleA{
+    color: black;
+}
+
+/*conntent*/
+#content p{
+    font-family: 'Oxygen', sans-serif;
+    font-size: 1.4rem;
+}
+
+#content a{
+    text-decoration: none;
+    color: brown;
+}
+
+#content mark{
+    color: darkred;
+}
+
+.dropdown-menu-dark .dropdown-item.active, 
+.dropdown-menu-dark .dropdown-item:active {
+    background-color: #293b79;
+}
+
+#header{
+    background-image: url(../img/space-fantasy-wallpaper-3.jpg);
+    background-size: cover;
+    background-position: 50% 65%;
+    background-blend-mode: soft-light;
+}
+
+#designs .carousel-caption{
+    background: #00000066;
+}
+
+#contact{
+    background-image: url(../img/space-fantasy-wallpaper-4.jpg);
+    background-size: cover;
+    background-position: 50% 65%;
+    background-blend-mode: soft-light;
+}
