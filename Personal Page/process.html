@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Process — Xiaoen Hu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#0a0a12;--cream:#f5f2eb;--gold:#c9a84c;--muted:#8a8a9a;--card-bg:#12121f;--border:rgba(201,168,76,0.2);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);overflow-x:hidden;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:rgba(10,10,18,0.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;letter-spacing:0.12em;color:var(--gold);text-decoration:none;}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;}
+    .nav-links a{color:var(--cream);text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.65;transition:opacity 0.2s,color 0.2s;}
+    .nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold);}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;}
+    .nav-toggle span{display:block;width:22px;height:1.5px;background:var(--cream);margin:5px 0;}
+
+    .page-header{padding:10rem 3rem 5rem;max-width:1100px;margin:0 auto;border-bottom:1px solid var(--border);}
+    .page-eyebrow{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+    .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1.1;}
+    .page-sub{margin-top:1.5rem;font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:520px;}
+
+    .process-wrap{max-width:1100px;margin:0 auto;padding:5rem 3rem;}
+    .page-entry{display:grid;grid-template-columns:280px 1fr;gap:4rem;padding:4rem 0;border-bottom:1px solid var(--border);align-items:start;}
+    .page-entry:first-child{padding-top:0;}
+    .entry-num{font-size:0.65rem;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem;}
+    .entry-page-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;margin-bottom:0.5rem;}
+    .entry-type{display:inline-block;padding:0.25rem 0.75rem;border:1px solid var(--border);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+    .entry-screenshot{margin-top:1.5rem;border:1px solid var(--border);overflow:hidden;}
+    .entry-screenshot img{width:100%;display:block;filter:brightness(0.9);}
+    .screenshot-ph{background:var(--card-bg);padding:3rem;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:0.8rem;gap:0.5rem;border:1px dashed rgba(201,168,76,0.15);}
+
+    .entry-content h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;margin:1.5rem 0 0.75rem;}
+    .entry-content h3:first-child{margin-top:0;}
+    .entry-content p{font-size:0.9rem;color:rgba(245,242,235,0.75);line-height:1.85;margin-bottom:0.85rem;}
+    .entry-content ul{list-style:none;margin-bottom:1rem;}
+    .entry-content ul li{font-size:0.88rem;color:var(--muted);padding:0.35rem 0 0.35rem 1rem;position:relative;}
+    .entry-content ul li::before{content:'—';position:absolute;left:0;color:var(--gold);font-size:0.7rem;top:0.4rem;}
+
+    .back-btn{display:inline-flex;align-items:center;gap:0.5rem;margin-top:3rem;padding:0.75rem 1.5rem;border:1px solid var(--border);color:var(--muted);text-decoration:none;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;transition:border-color 0.2s,color 0.2s;}
+    .back-btn:hover{border-color:var(--gold);color:var(--gold);}
+
+    footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:0.75rem;color:var(--muted);}
+
+    @media(max-width:768px){
+      nav{padding:1rem 1.5rem;}
+      .nav-links{position:fixed;inset:0 0 0 35%;background:rgba(8,8,16,0.98);flex-direction:column;padding:5rem 2rem;gap:2rem;transform:translateX(100%);transition:transform 0.3s;z-index:99;}
+      .nav-links.open{transform:translateX(0);}
+      .nav-toggle{display:block;z-index:101;}
+      .page-header{padding:7rem 1.5rem 3rem;}
+      .process-wrap{padding:3rem 1.5rem;}
+      .page-entry{grid-template-columns:1fr;gap:2rem;}
+      footer{padding:1.5rem;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">XH</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="design.html">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-header">
+  <p class="page-eyebrow">Documentation</p>
+  <h1 class="page-title">Design Process</h1>
+  <p class="page-sub">A walkthrough of the design decisions, typology, and creative thinking behind each page of this portfolio.</p>
+</div>
+
+<div class="process-wrap">
+
+  <div class="page-entry">
+    <div class="entry-meta">
+      <p class="entry-num">Page 01</p>
+      <h2 class="entry-page-name">Home</h2>
+      <span class="entry-type">Landing Page</span>
+      <div class="entry-screenshot">
+        <div class="screenshot-ph">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          img/index.png · (add screenshot of home page)
+        </div>
+      </div>
+    </div>
+    <div class="entry-content">
+      <h3>Concept &amp; Aesthetic</h3>
+      <p>The home page establishes the galaxy/space theme that runs throughout the entire portfolio. A dark, deep navy background immediately signals the color identity, while warm gold accents create contrast and draw attention to key elements.</p>
+      <p>The original greeting used a curly, welcoming script font to catch the eye immediately — a visual contrast against the cosmic backdrop.</p>
+      <h3>Structure</h3>
+      <p>The page is divided into two sections: a full-screen hero greeting the visitor, followed by a card grid previewing the four main sections of the site.</p>
+      <ul>
+        <li>Hero: full-viewport greeting with background image and starfield effect</li>
+        <li>Cards: dark-background cards with gold details and image thumbnails, each linking to a section</li>
+        <li>Navigation: persistent dark navbar with space-branded logo</li>
+      </ul>
+      <h3>Color Decisions</h3>
+      <p>Black anchors the space/galaxy theme. Gold accents evoke quality and create visual hierarchy. The original cyan accent was chosen to feel welcoming and tech-forward against the dark field.</p>
+    </div>
+  </div>
+
+  <div class="page-entry">
+    <div class="entry-meta">
+      <p class="entry-num">Page 02</p>
+      <h2 class="entry-page-name">About</h2>
+      <span class="entry-type">Content Heavy</span>
+      <div class="entry-screenshot">
+        <div class="screenshot-ph">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          img/about.png · (add screenshot of about page)
+        </div>
+      </div>
+    </div>
+    <div class="entry-content">
+      <h3>Intent</h3>
+      <p>The About page balances warmth with professionalism. A self-introduction video plays at the top (autoplay, muted, looped) to give visitors an immediate personal impression before reading any text.</p>
+      <h3>Content Structure</h3>
+      <p>A two-column layout separates a sticky sidebar from the main narrative. The sidebar contains education, skills, interests, and links. The main content flows naturally: introduction, capabilities, experience timeline, and personal interests.</p>
+      <ul>
+        <li>Video header for personality and human connection</li>
+        <li>Sticky sidebar with quick facts and skill tags</li>
+        <li>Main prose narrative and timeline</li>
+        <li>External links to university, programs, and past employers</li>
+      </ul>
+      <h3>Visual Hierarchy</h3>
+      <p>Montserrat and Open Sans were replaced with Cormorant Garamond and DM Sans for a more sophisticated feel. Clear paragraph structure and gold accent links guide the reader through the narrative.</p>
+    </div>
+  </div>
+
+  <div class="page-entry">
+    <div class="entry-meta">
+      <p class="entry-num">Page 03</p>
+      <h2 class="entry-page-name">Design</h2>
+      <span class="entry-type">Photo Rich</span>
+      <div class="entry-screenshot">
+        <div class="screenshot-ph">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          img/work.png · (add screenshot of design page)
+        </div>
+      </div>
+    </div>
+    <div class="entry-content">
+      <h3>Purpose</h3>
+      <p>This gallery page showcases past design work. The primary goal is to display the work prominently without distraction, letting images speak for themselves while hover overlays provide context.</p>
+      <h3>Interaction Design</h3>
+      <p>A masonry-style grid displays thumbnails. Clicking any image opens a custom lightbox overlay with the full-resolution image and a descriptive caption. The layout is responsive, collapsing to a single column on mobile.</p>
+      <ul>
+        <li>Masonry grid with image previews and labels</li>
+        <li>Click-to-expand lightbox modal with captions</li>
+        <li>Hover overlay showing design type and brief description</li>
+        <li>Keyboard support: ESC closes the lightbox</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-entry">
+    <div class="entry-meta">
+      <p class="entry-num">Page 04</p>
+      <h2 class="entry-page-name">Contact</h2>
+      <span class="entry-type">Form</span>
+      <div class="entry-screenshot">
+        <div class="screenshot-ph">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          img/contact.png · (add screenshot of contact page)
+        </div>
+      </div>
+    </div>
+    <div class="entry-content">
+      <h3>Function</h3>
+      <p>The contact page provides a clear, inviting way for viewers to reach out for collaboration or just to connect. A two-column layout presents contact info and quick links on the left, and a clean form on the right.</p>
+      <h3>Form Details</h3>
+      <p>The form captures email and message, with optional subscription to a Bilibili channel. Client-side validation prevents empty or malformed submissions. A success message displays upon valid submission (form data is not actually sent — add a backend service like Formspree if needed).</p>
+      <ul>
+        <li>Email input with format validation</li>
+        <li>Textarea for freeform message</li>
+        <li>Checkbox for Bilibili subscription opt-in</li>
+        <li>Gold submit button matching site theme</li>
+        <li>Real-time error display and success feedback</li>
+      </ul>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Back to Home</a>
+</div>
+
+<footer>
+  <span>© 2024 Xiaoen Hu (胡潇恩)</span>
+  <span>University of Toronto Mississauga</span>
+</footer>
+<script>
+  const t=document.getElementById('navToggle'),l=document.getElementById('navLinks');
+  t.addEventListener('click',()=>l.classList.toggle('open'));
+</script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Xiaoen Hu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#0a0a12;--cream:#f5f2eb;--gold:#c9a84c;--muted:#8a8a9a;--card-bg:#12121f;--border:rgba(201,168,76,0.2);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);overflow-x:hidden;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:rgba(10,10,18,0.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;letter-spacing:0.12em;color:var(--gold);text-decoration:none;}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;}
+    .nav-links a{color:var(--cream);text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.65;transition:opacity 0.2s,color 0.2s;}
+    .nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold);}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;}
+    .nav-toggle span{display:block;width:22px;height:1.5px;background:var(--cream);margin:5px 0;}
+
+    /* PAGE HEADER */
+    .page-header{padding:10rem 3rem 5rem;max-width:1100px;margin:0 auto;border-bottom:1px solid var(--border);}
+    .page-eyebrow{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+    .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1.1;}
+
+    /* VIDEO SECTION */
+    .video-section{max-width:1100px;margin:0 auto;padding:4rem 3rem 0;}
+    .video-wrap{position:relative;width:100%;max-width:680px;margin:0 auto;}
+    .video-wrap video{width:100%;display:block;border:1px solid var(--border);}
+    /* fallback placeholder shown if video can't load */
+    .video-ph{width:100%;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:var(--card-bg);border:1px solid var(--border);}
+    .video-ph svg{opacity:0.25;}
+    .video-ph p{font-size:0.8rem;color:var(--muted);letter-spacing:0.1em;}
+    .video-ph.hidden{display:none;}
+    /* caption bar */
+    .video-caption{margin-top:0;}
+    .video-caption-bar{display:flex;align-items:center;gap:0.75rem;padding:0.85rem 1rem;background:var(--card-bg);border:1px solid var(--border);border-top:none;}
+    .vcap-icon{color:var(--gold);font-size:0.9rem;flex-shrink:0;}
+    .vcap-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-right:0.5rem;}
+    .vcap-text{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+
+    /* CONTENT LAYOUT */
+    .content-wrap{max-width:1100px;margin:0 auto;padding:4rem 3rem 6rem;display:grid;grid-template-columns:240px 1fr;gap:5rem;align-items:start;}
+    .sidebar{position:sticky;top:6rem;}
+    .sidebar-section{margin-bottom:2.5rem;}
+    .sidebar-label{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.85rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+    .sidebar-list{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+    .sidebar-list li{font-size:0.83rem;color:var(--muted);padding:0.35rem 0;}
+    .sidebar-list li strong{color:var(--cream);font-weight:400;}
+    .skill-tag{display:inline-block;padding:0.28rem 0.7rem;border:1px solid var(--border);font-size:0.7rem;letter-spacing:0.07em;color:var(--muted);margin:0.2rem;transition:border-color 0.2s,color 0.2s;}
+    .skill-tag:hover{border-color:var(--gold);color:var(--gold);}
+
+    /* BIO */
+    .bio-section{margin-bottom:3rem;}
+    .bio-section h2{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;margin-bottom:1.2rem;}
+    .bio-section p{font-size:0.93rem;line-height:1.85;color:rgba(245,242,235,0.78);margin-bottom:1rem;}
+    .bio-section a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s;}
+    .bio-section a:hover{border-color:var(--gold);}
+    .exp-item{border-left:1px solid var(--border);padding-left:1.5rem;margin-bottom:2rem;position:relative;}
+    .exp-item::before{content:'';position:absolute;left:-4px;top:0.4rem;width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:0.6;}
+    .exp-role{font-size:0.93rem;font-weight:500;margin-bottom:0.2rem;}
+    .exp-org{font-size:0.78rem;color:var(--gold);margin-bottom:0.45rem;}
+    .exp-desc{font-size:0.83rem;color:var(--muted);line-height:1.65;}
+
+    footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:0.75rem;color:var(--muted);}
+
+    @media(max-width:768px){
+      nav{padding:1rem 1.5rem;}
+      .nav-links{position:fixed;inset:0 0 0 35%;background:rgba(8,8,16,0.98);flex-direction:column;padding:5rem 2rem;gap:2rem;transform:translateX(100%);transition:transform 0.3s;z-index:99;}
+      .nav-links.open{transform:translateX(0);}
+      .nav-toggle{display:block;z-index:101;}
+      .page-header{padding:7rem 1.5rem 3rem;}
+      .video-section{padding:3rem 1.5rem 0;}
+      .content-wrap{grid-template-columns:1fr;gap:3rem;padding:3rem 1.5rem 4rem;}
+      .sidebar{position:static;}
+      footer{padding:1.5rem;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">XH</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="design.html">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-header">
+  <p class="page-eyebrow">About</p>
+  <h1 class="page-title">Xiaoen Hu<br><span style="opacity:0.38;font-size:0.55em;">胡潇恩</span></h1>
+</div>
+
+<!-- VIDEO -->
+<div class="video-section">
+  <div class="video-wrap">
+    <video id="introVideo" autoplay muted loop playsinline
+           oncanplay="document.getElementById('videoPh').classList.add('hidden')"
+           onerror="document.getElementById('videoEl').style.display='none'">
+      <source src="media/me.mp4" type="video/mp4">
+    </video>
+    <div id="videoPh" class="video-ph">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      <p>media/me.mp4 · self-introduction video</p>
+    </div>
+    <div class="video-caption">
+      <div class="video-caption-bar">
+        <span class="vcap-icon">▶</span>
+        <span class="vcap-label">Video</span>
+        <span class="vcap-text">Self-introduction — autoplay, muted &amp; looped. Xiaoen introduces themselves and gives a feel for who they are as a person before you read on.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TWO-COLUMN CONTENT -->
+<div class="content-wrap">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <p class="sidebar-label">Education</p>
+      <ul class="sidebar-list">
+        <li><strong>University of Toronto Mississauga</strong></li>
+        <li>CCIT Major</li>
+        <li>Art History Major</li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <p class="sidebar-label">Skills</p>
+      <div>
+        <span class="skill-tag">HTML &amp; CSS</span>
+        <span class="skill-tag">Illustrator</span>
+        <span class="skill-tag">Photoshop</span>
+        <span class="skill-tag">Tableau</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">Media Encoder</span>
+        <span class="skill-tag">UX Design</span>
+        <span class="skill-tag">Image Analysis</span>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <p class="sidebar-label">Interests</p>
+      <ul class="sidebar-list">
+        <li>Video Games</li>
+        <li>Dungeons &amp; Dragons</li>
+        <li>Digital Design</li>
+        <li>Art History</li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <p class="sidebar-label">Find Me</p>
+      <ul class="sidebar-list">
+        <li><a href="https://space.bilibili.com/5360721" style="color:var(--gold);text-decoration:none;" target="_blank">→ Bilibili Channel</a></li>
+        <li><a href="contact.html" style="color:var(--gold);text-decoration:none;">→ Send a Message</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <div class="bio-section">
+      <h2>Hello, I'm Shawn</h2>
+      <p>My name is Xiaoen — most people call me Shawn, which is a bit easier. I'm 21 years old, originally from China, and currently living in Mississauga to be close to campus.</p>
+      <p>I study at the <a href="https://www.utm.utoronto.ca/" target="_blank">University of Toronto Mississauga</a> as an undergraduate pursuing a double major in <a href="https://student.utm.utoronto.ca/calendar/program_group.pl?Group_Id=39" target="_blank">CCIT (Communication, Culture, Information &amp; Technology)</a> and <a href="https://student.utm.utoronto.ca/calendar/program_group.pl?Group_Id=31" target="_blank">Art History</a>.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>Capabilities</h2>
+      <p>Through coursework and independent projects I've built practical skills in front-end development (HTML, CSS), data visualization (Excel, Tableau), and Adobe Creative Suite tools including Illustrator, Photoshop, and Media Encoder. I'm also trained in image analysis and various design methodologies.</p>
+    </div>
+
+    <div class="bio-section">
+      <h2>Experience</h2>
+      <div class="exp-item">
+        <p class="exp-role">Front Desk Associate</p>
+        <p class="exp-org"><a href="https://challenger-gaming.business.site/" target="_blank" style="color:var(--gold);text-decoration:none;">Challenger Gaming</a></p>
+        <p class="exp-desc">Handled customer-facing operations in a fast-paced gaming centre. Strengthened communication and interpersonal skills while engaging with a diverse clientele.</p>
+      </div>
+      <div class="exp-item">
+        <p class="exp-role">Teaching Assistant</p>
+        <p class="exp-org"><a href="http://www.acesedu.ca/" target="_blank" style="color:var(--gold);text-decoration:none;">Aces Education</a></p>
+        <p class="exp-desc">Supported students in their learning journey. Developed instructional and interpersonal skills, adapting explanations to different learning styles.</p>
+      </div>
+    </div>
+
+    <div class="bio-section">
+      <h2>Beyond Work</h2>
+      <p>When I'm not studying or designing, you'll find me playing video games or running Dungeons &amp; Dragons campaigns with friends I met online. I share my D&amp;D content on <a href="https://space.bilibili.com/5360721" target="_blank">Bilibili</a>.</p>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <span>© 2024 Xiaoen Hu (胡潇恩)</span>
+  <span>University of Toronto Mississauga</span>
+</footer>
+<script>
+  const t=document.getElementById('navToggle'),l=document.getElementById('navLinks');
+  t.addEventListener('click',()=>l.classList.toggle('open'));
+</script>
+</body>
+</html>

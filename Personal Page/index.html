@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Xiaoen Hu — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#0a0a12;--cream:#f5f2eb;--gold:#c9a84c;--muted:#8a8a9a;--card-bg:#12121f;--border:rgba(201,168,76,0.2);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);overflow-x:hidden;}
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:rgba(10,10,18,0.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;letter-spacing:0.12em;color:var(--gold);text-decoration:none;}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;}
+    .nav-links a{color:var(--cream);text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.65;transition:opacity 0.2s,color 0.2s;}
+    .nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold);}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;}
+    .nav-toggle span{display:block;width:22px;height:1.5px;background:var(--cream);margin:5px 0;}
+    /* HERO */
+    .hero{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;padding:0 2rem;}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(201,168,76,0.07) 0%,transparent 60%),radial-gradient(ellipse 50% 80% at 20% 80%,rgba(80,80,180,0.09) 0%,transparent 50%);}
+    .stars{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 8% 18%,rgba(255,255,255,0.65) 0%,transparent 100%),radial-gradient(1px 1px at 25% 55%,rgba(255,255,255,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 47% 8%,rgba(255,255,255,0.5) 0%,transparent 100%),radial-gradient(1px 1px at 68% 78%,rgba(255,255,255,0.35) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 83% 32%,rgba(201,168,76,0.55) 0%,transparent 100%),radial-gradient(1px 1px at 18% 88%,rgba(255,255,255,0.45) 0%,transparent 100%),radial-gradient(1px 1px at 57% 47%,rgba(255,255,255,0.3) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 92% 63%,rgba(201,168,76,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 4% 42%,rgba(255,255,255,0.5) 0%,transparent 100%),radial-gradient(1px 1px at 73% 22%,rgba(255,255,255,0.3) 0%,transparent 100%),radial-gradient(1px 1px at 38% 72%,rgba(255,255,255,0.4) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 60% 93%,rgba(201,168,76,0.35) 0%,transparent 100%);}
+    .hero-content{position:relative;z-index:1;text-align:center;max-width:800px;}
+    .hero-eyebrow{font-size:0.75rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;animation:fadeUp 0.8s ease both;}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6rem);font-weight:300;line-height:1.1;margin-bottom:1.5rem;animation:fadeUp 0.8s 0.15s ease both;}
+    .hero-title em{color:var(--gold);font-style:normal;}
+    .hero-sub{font-size:1rem;font-weight:300;color:var(--muted);max-width:480px;margin:0 auto 2.5rem;line-height:1.75;animation:fadeUp 0.8s 0.3s ease both;}
+    .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.8s 0.45s ease both;}
+    .btn-gold{padding:0.75rem 2rem;border:1px solid var(--gold);color:var(--gold);text-decoration:none;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;transition:background 0.25s,color 0.25s;}
+    .btn-gold:hover{background:var(--gold);color:var(--ink);}
+    .btn-ghost{padding:0.75rem 2rem;border:1px solid rgba(245,242,235,0.22);color:var(--cream);text-decoration:none;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;transition:border-color 0.25s;}
+    .btn-ghost:hover{border-color:var(--cream);}
+    .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);animation:fadeUp 0.8s 0.7s ease both;}
+    .scroll-hint::after{content:'';width:1px;height:40px;background:linear-gradient(to bottom,var(--muted),transparent);}
+    /* EXPLORE */
+    .explore{padding:6rem 3rem;max-width:1100px;margin:0 auto;}
+    .section-label{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;margin-bottom:3rem;}
+    /* CARDS */
+    .cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;}
+    .card{background:var(--card-bg);text-decoration:none;color:var(--cream);display:flex;flex-direction:column;overflow:hidden;transition:background 0.25s;}
+    .card:hover{background:#14142a;}
+    .card-thumb{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;background:#0c0c1a;flex-shrink:0;}
+    .card-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease,filter 0.3s;filter:brightness(0.72) saturate(0.85);}
+    .card:hover .card-thumb img{transform:scale(1.05);filter:brightness(0.5) saturate(1);}
+    .thumb-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.6rem;background:linear-gradient(135deg,#0d0d1c,#13132a);pointer-events:none;}
+    .thumb-ph svg{opacity:0.2;}
+    .thumb-ph span{font-size:0.7rem;letter-spacing:0.1em;color:var(--muted);opacity:0.55;}
+    img.loaded + .thumb-ph{display:none;}
+    .card-body{padding:1.5rem 1.75rem 2rem;display:flex;flex-direction:column;gap:0.45rem;flex:1;}
+    .card-num{font-size:0.62rem;letter-spacing:0.22em;color:var(--gold);opacity:0.55;}
+    .card-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;}
+    .card-desc{font-size:0.83rem;color:var(--muted);line-height:1.65;}
+    .card-cta{margin-top:auto;padding-top:0.75rem;font-size:0.72rem;color:var(--gold);letter-spacing:0.12em;opacity:0;transition:opacity 0.2s,transform 0.2s;}
+    .card:hover .card-cta{opacity:1;transform:translateX(4px);}
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:0.75rem;color:var(--muted);}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    @media(max-width:768px){
+      nav{padding:1rem 1.5rem;}
+      .nav-links{position:fixed;inset:0 0 0 35%;background:rgba(8,8,16,0.98);flex-direction:column;padding:5rem 2rem;gap:2rem;transform:translateX(100%);transition:transform 0.3s;z-index:99;}
+      .nav-links.open{transform:translateX(0);}
+      .nav-toggle{display:block;z-index:101;}
+      .explore{padding:4rem 1.5rem;}
+      .cards-grid{grid-template-columns:1fr;}
+      footer{padding:1.5rem;}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">XH</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="design.html">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="stars"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Portfolio — Xiaoen Hu</p>
+    <h1 class="hero-title">CCIT Student,<br>Designer &amp; <em>Creator</em></h1>
+    <p class="hero-sub">Undergraduate at the University of Toronto Mississauga, studying Communication, Culture, Information &amp; Technology with a passion for design and visual storytelling.</p>
+    <div class="hero-actions">
+      <a href="about.html" class="btn-gold">About Me</a>
+      <a href="contact.html" class="btn-ghost">Get In Touch</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</div>
+
+<section class="explore">
+  <p class="section-label">Explore</p>
+  <h2 class="section-title">What You'll Find Here</h2>
+  <div class="cards-grid">
+
+    <a href="about.html" class="card">
+      <div class="card-thumb">
+        <img src="img/about-me-image.jpg" alt="About Me" onload="this.classList.add('loaded')">
+        <div class="thumb-ph">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span>about-me-image.jpg</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <span class="card-num">01</span>
+        <h3 class="card-title">About Me</h3>
+        <p class="card-desc">Background, skills, experiences, and what I'm passionate about.</p>
+        <span class="card-cta">View page →</span>
+      </div>
+    </a>
+
+    <a href="design.html" class="card">
+      <div class="card-thumb">
+        <img src="img/design-image.jpg" alt="My Design" onload="this.classList.add('loaded')">
+        <div class="thumb-ph">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>design-image.jpg</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <span class="card-num">02</span>
+        <h3 class="card-title">My Design</h3>
+        <p class="card-desc">Past design works from illustration to UX and beyond.</p>
+        <span class="card-cta">View gallery →</span>
+      </div>
+    </a>
+
+    <a href="contact.html" class="card">
+      <div class="card-thumb">
+        <img src="img/contact-image.jpg" alt="Contact" onload="this.classList.add('loaded')">
+        <div class="thumb-ph">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>contact-image.jpg</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <span class="card-num">03</span>
+        <h3 class="card-title">Contact</h3>
+        <p class="card-desc">Interested in connecting? Drop me a message anytime.</p>
+        <span class="card-cta">Get in touch →</span>
+      </div>
+    </a>
+
+    <a href="process.html" class="card">
+      <div class="card-thumb">
+        <img src="img/resume-image.jpg" alt="Process" onload="this.classList.add('loaded')">
+        <div class="thumb-ph">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>resume-image.jpg</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <span class="card-num">04</span>
+        <h3 class="card-title">Process</h3>
+        <p class="card-desc">Design documentation and behind-the-scenes of this project.</p>
+        <span class="card-cta">Read notes →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <span>© 2024 Xiaoen Hu (胡潇恩)</span>
+  <span>University of Toronto Mississauga</span>
+</footer>
+<script>
+  const t=document.getElementById('navToggle'),l=document.getElementById('navLinks');
+  t.addEventListener('click',()=>l.classList.toggle('open'));
+  document.querySelectorAll('.card-thumb img').forEach(i=>{if(i.complete&&i.naturalWidth)i.classList.add('loaded');});
+</script>
+</body>
+</html>
